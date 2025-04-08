@@ -108,7 +108,7 @@ jobs:
 * Github action workflows can be triggered by different [event triggers](https://docs.github.com/en/actions/writing-workflows/choosing-when-your-workflow-runs/events-that-trigger-workflows). Eg. ```push event, pull request event, workflow dispatch etc```. 
 * Note: pull request and issues comment are similar events for workflows. ```Workflow dispatch event``` allows you to manually trigger a workflow. It can be handy especially for debugging.
 
-* create a [trigger.yaml]() to accomodate branch and different events trigger. commit and check actions on Gitub.
+* create a [trigger.yaml](https://github.com/bluemusk24/cicd_wandb/blob/main/.github/workflows/trigger.yaml) to accomodate branch and different events trigger. commit and check actions on Gitub.
 
 ```bash
 name: trigger-demo
@@ -126,3 +126,15 @@ jobs:
       - name: Just saying Hello
         run: echo "hello"
 ```
+
+### Setting Up Github Actions Environment
+
+* Basically, this is creating a boilerplate ```actions/checkout/@v3``` to clone all contents from a repo into it.
+
+### Special Variables
+
+* create [variables.yaml](). This contains special variables like: ```${{ github.event_name }}, ${{ github.ref }}, ${{ github.repository }}, ${{ github.actor }}, ${{ github.workspace }}, ${{ job.status }}, ${{ runner.os }} etc```. 
+
+* For more info of variables starting with ```${{ github. }}```, read about [github context](https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/accessing-contextual-information-about-workflow-runs#github-context).
+
+* commit to repo and trigger the workflow
