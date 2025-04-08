@@ -33,7 +33,7 @@ jobs:                                                                           
 
 * commit to Github repo and trigger the action. Click on Action on Github to see each run jobs.
 
-* Create and run Python Script [ci.py]()
+### Python Script with Github Actions
 
 ```bash
 python3 ci.py
@@ -42,6 +42,23 @@ python3 ci.py
 * Update the ```ci.yaml``` file to run Python Script ```ci.py``` with Github actions, using checkout actions. Github checkout action clones the contents in the current repo into ```actions/checkout/@v3```, to have access to the files in the repository.
 
 ```bash
+name: GitHub Actions Demo                                                                                         
+
+on: [push]                                                                                                        
+
+jobs:                                                                                                             
+  my-first-job:                                                                                                   
+    runs-on: ubuntu-latest                                                                                        
+    steps:
+      - uses: actions/checkout@v3
+      - name: hello                                                            
+        run: |                                                                                                    
+          echo "hello world"
+      - name: run Python script
+        run: |
+          pip install -r requirements.txt
+          python3 ci.py                                                                                   
+
 git status
 
 git add .
@@ -50,3 +67,9 @@ git commit -m 'create workflow that runs python script'
 
 git push <git-repo-url>
 ```
+
+### Github Actions Secrets
+
+* Github action secrets allow the usage of sensitive information such as passwords or tokens inside your Github actions workflow, so as not to open the tokens for everyone to see. To create a secret on Github, ```On the github repo, go to settings, secrets and variables, actions, new repository secrets```
+
+* To access the secrets from workflow, create a [secret.yaml]()
