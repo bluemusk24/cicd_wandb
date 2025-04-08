@@ -73,3 +73,17 @@ git push <git-repo-url>
 * Github action secrets allow the usage of sensitive information such as passwords or tokens inside your Github actions workflow, so as not to open the tokens for everyone to see. To create a secret on Github, ```On the github repo, go to settings, secrets and variables, actions, new repository secrets```
 
 * To access the secrets from workflow, create a [secret.yaml]()
+
+```bash
+on: push
+
+jobs:
+  secrets:
+    runs-on: ubuntu-latest
+    steps:
+    - run: echo $MY_VAR
+      env:
+        MY_VAR: ${{ secrets.MY_SECRET }}
+```
+
+* Check the length of the Github Secrets from the updated [secret.yaml]()
