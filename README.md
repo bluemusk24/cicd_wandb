@@ -31,4 +31,22 @@ jobs:                                                                           
 
 ```
 
-* commit to Github repo and trigger the action
+* commit to Github repo and trigger the action. Click on Action on Github to see each run jobs.
+
+* Create and run Python Script [ci.py]()
+
+```bash
+python3 ci.py
+```
+
+* Update the ```ci.yaml``` file to run Python Script ```ci.py``` with Github actions, using checkout actions. Github checkout action clones the contents in the current repo into ```actions/checkout/@v3```, to have access to the files in the repository.
+
+```bash
+git status
+
+git add .
+
+git commit -m 'create workflow that runs python script'
+
+git push <git-repo-url>
+```
