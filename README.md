@@ -127,4 +127,4 @@ jobs:
         run: echo "hello"
 ```
 
-* These are the resources for the Weights and Biases CICD ML course.
+* This repo contains the resources for the Weights and Biases CICD ML course.
