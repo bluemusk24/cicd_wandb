@@ -4,7 +4,7 @@ The tutorial incorporates Weights and Baises with CICD for Machine Learning. ```
 
 Weights and Biases can also be used to cretae reports, tables, artifacts and monitoring for ML infrastructure.
 
-* [1. create_runs.ipynb]() --> follow this notebook to create ```PROJECT and RUNS``` on Weights and Biases. Check Weights and Biases UI
+* [1. create_runs.ipynb](https://github.com/bluemusk24/cicd_wandb/blob/main/1.%20create_runs.ipynb) --> follow this notebook to create ```PROJECT and RUNS``` on Weights and Biases. Check Weights and Biases UI
 
 * create a simple workflow template using the following Github action configurations [Github QuickStart Workflow](https://docs.github.com/en/actions/writing-workflows/quickstart). Paste this code below in ```.github/workflows/ci.yaml```. 
 
@@ -39,7 +39,7 @@ jobs:                                                                           
 python3 ci.py
 ```
 
-* Update the ```ci.yaml``` file to run Python Script ```ci.py``` with Github actions, using checkout actions. Github checkout action clones the contents in the current repo into ```actions/checkout/@v3```, to have access to the files in the repository.
+* Update the ```ci.yaml``` file to run Python Script [ci.py](https://github.com/bluemusk24/cicd_wandb/blob/main/ci.py) with Github actions, using checkout actions. Github checkout action clones the contents in the current repo into ```actions/checkout/@v3```, to have access to the files in the repository.
 
 ```bash
 name: GitHub Actions Demo                                                                                         
@@ -86,4 +86,43 @@ jobs:
         MY_VAR: ${{ secrets.MY_SECRET }}
 ```
 
-* Check the length of the Github Secrets from the updated [secret.yaml]()
+* Print the length of the Github Secrets from the updated [secret.yaml](https://github.com/bluemusk24/cicd_wandb/blob/main/.github/workflows/secret.yaml)
+
+```bash
+on: push
+
+jobs:
+  secrets:
+    runs-on: ubuntu-latest
+    steps:
+    - run: |
+        import os
+        print(len(os.getenv('MY_VAR')))
+      shell: python
+      env:
+        MY_VAR: ${{ secrets.MY_SECRET }}
+```
+
+### Event Triggers
+
+* Github action workflows can be triggered by different [event triggers](https://docs.github.com/en/actions/writing-workflows/choosing-when-your-workflow-runs/events-that-trigger-workflows). Eg. ```push event, pull request event, workflow dispatch etc```. 
+* Note: pull request and issues comment are similar events for workflows. ```Workflow dispatch event``` allows you to manually trigger a workflow. It can be handy especially for debugging.
+
+* create a [trigger.yaml]() to accomodate branch and different events trigger. commit and check actions on Gitub.
+
+```bash
+name: trigger-demo
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  trigger-demo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Just saying Hello
+        run: echo "hello"
+```
