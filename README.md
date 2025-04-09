@@ -133,8 +133,10 @@ jobs:
 
 ### Special Variables
 
-* create [variables.yaml](). This contains special variables like: ```${{ github.event_name }}, ${{ github.ref }}, ${{ github.repository }}, ${{ github.actor }}, ${{ github.workspace }}, ${{ job.status }}, ${{ runner.os }} etc```. 
+* create [variables.yaml](https://github.com/bluemusk24/cicd_wandb/blob/main/.github/workflows/variables.yaml). This contains special variables like: ```${{ github.event_name }}, ${{ github.ref }}, ${{ github.repository }}, ${{ github.actor }}, ${{ github.workspace }}, ${{ job.status }}, ${{ runner.os }} etc```. 
 
-* For more info of variables starting with ```${{ github. }}```, read about [github context](https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/accessing-contextual-information-about-workflow-runs#github-context).
+* For more info of variables starting with ```${{ github. }}```, read about [github context](https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/accessing-contextual-information-about-workflow-runs#github-context) and [Github Variables](https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/store-information-in-variables#default-environment-variables). commit to Github repo and trigger the workflow, check Actions.
 
-* commit to repo and trigger the workflow
+### Using Variables Inside Github Actions
+
+* create [io.yaml](). Note: An ID is needed in the ```yaml file``` inorder to reference an output from a previous step.  
