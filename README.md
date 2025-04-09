@@ -128,3 +128,7 @@ jobs:
 ```
 
 * This repo contains the resources for the Weights and Biases CICD ML course.
+
+### Branch Protection Rules
+
+* Branch protection is needed to prevent created merging pull request branch with the main branch, whenever there is a failure of a pull request event. Go to settings, Branches, branch protection rules (include main as branch name pattern), check required status check before passing (include job name). If a test is passed on a Pull request branch, it will ask to be merged with the main branch; otherwise, the merge pull request will be inactive.
